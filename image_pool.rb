@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'gosu'
-
 class ImagePool
   @@image_files = {}
   @@image_texts = {}

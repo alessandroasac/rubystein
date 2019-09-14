@@ -1,6 +1,6 @@
-require 'config'
-require 'sprite'
-require 'door'
+require_relative 'config'
+require_relative 'sprite'
+require_relative 'door'
 
 class Map
   Infinity = 1.0 / 0

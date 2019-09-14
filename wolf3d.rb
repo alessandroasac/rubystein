@@ -1,18 +1,16 @@
 #!/usr/bin/env ruby
-require 'rubygems'
-require 'gosu'
 
-require 'config'
-require 'map'
-require 'sound'
-require 'weapon'
-require 'player'
-require 'ai_player'
-require 'sprite'
-require 'door'
-require 'image_pool'
+require_relative 'config'
+require_relative 'map'
+require_relative 'sound'
+require_relative 'weapon'
+require_relative 'player'
+require_relative 'ai_player'
+require_relative 'sprite'
+require_relative 'door'
+require_relative 'image_pool'
 
-require 'level'
+require_relative 'level'
 
 module ZOrder
   BACKGROUND = 0

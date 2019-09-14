@@ -1,8 +1,6 @@
-require 'rubygems'
-require 'gosu'
-require 'sound'
-require 'weapon'
-require 'map'
+require_relative 'sound'
+require_relative 'weapon'
+require_relative 'map'
 
 module Sprite
   TEX_WIDTH  = 64

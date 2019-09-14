@@ -1,4 +1,4 @@
-require 'map'
+require_relative 'map'
 
 class Level0
 private

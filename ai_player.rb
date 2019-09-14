@@ -1,7 +1,7 @@
-require 'map'
-require 'sprite'
-require 'weapon'
-require 'sound'
+require_relative 'map'
+require_relative 'sprite'
+require_relative 'weapon'
+require_relative 'sound'
 
 module AStar
   Coordinate = Struct.new(:x, :y)

@@ -1,3 +1,5 @@
+require "rake/testtask"
+
 verbose true
 
 PACKAGE_NAME = "rubystein"
@@ -8,4 +10,8 @@ task :package do
   sh "mkdir -p #{PACKAGE_NAME}-#{PACKAGE_VERSION}"
   sh "cp -pR CREDIT *.rb *.mp3 *.wav *.ogg *.png *.bmp #{PACKAGE_NAME}-#{PACKAGE_VERSION}/"
   sh "tar -zcf #{PACKAGE_NAME}-#{PACKAGE_VERSION}.tar.gz #{PACKAGE_NAME}-#{PACKAGE_VERSION}"
+end
+
+Rake::TestTask.new(:test) do |t|
+  t.test_files = FileList["test/**/*_test.rb"]
 end

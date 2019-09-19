@@ -1,5 +1,10 @@
 #!/usr/bin/env ruby
 
+# Add current path to LOAD_PATH
+# $: << "."
+
+require 'gosu'
+
 require_relative 'config'
 require_relative 'map'
 require_relative 'sound'
@@ -94,6 +99,8 @@ class GameWindow < Gosu::Window
   end
 
   def update
+    track_update_interval
+
     case @mode
     when :normal, :fading_out
       update_fade_out_progress
@@ -119,6 +126,8 @@ class GameWindow < Gosu::Window
     else
       abort "Invalid mode '#{@mode}'"
     end
+
+    self.caption = "Rubystein 3d by Phusion CS Company - #{Gosu.fps}FPS"
   end
   
   def draw
@@ -194,6 +203,20 @@ class GameWindow < Gosu::Window
       }
       update_boss_presentation_progress
     end
+  end
+
+  def track_update_interval
+    now = Gosu.milliseconds
+    @update_interval = (now - (@last_update || 0)).to_f
+    @last_update = now
+  end
+
+  def update_interval
+    @update_interval ||= self.update_interval
+  end
+
+  def adjust_speed(speed)
+    speed * update_interval / 33.33
   end
 
   private
@@ -384,6 +407,7 @@ class GameWindow < Gosu::Window
     if id == Gosu::Button::KbEscape
       close
     end
+    super
   end
 
   def draw_sprites
@@ -681,7 +705,6 @@ class GameWindow < Gosu::Window
       end
     end
   end
-  
 end
 
 game_window = GameWindow.new

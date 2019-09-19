@@ -373,8 +373,8 @@ class GameWindow < Gosu::Window
   def process_movement_input
     @player.turn_left  if button_down? Gosu::Button::KbLeft
     @player.turn_right if button_down? Gosu::Button::KbRight
-    @player.move_forward  if button_down? Gosu::Button::KbUp and @player.can_move_forward?(@map)
-    @player.move_backward if button_down? Gosu::Button::KbDown and @player.can_move_backward?(@map)
+    @player.move_forward  if (button_down?(Gosu::Button::KbUp) || button_down?(Gosu::Button::KbW)) && @player.can_move_forward?(@map)
+    @player.move_backward if (button_down?(Gosu::Button::KbDown) || button_down?(Gosu::Button::KbS)) && @player.can_move_backward?(@map)
     
     if button_down? Gosu::Button::KbSpace
       column, row = Map.matrixify(@player.x, @player.y)

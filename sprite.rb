@@ -20,7 +20,7 @@ class SpritePool
     file_path = File.expand_path(file_path)
     if !@@files[file_path]
       begin
-        @@files[file_path] = Gosu::Image::load_tiles(window, file_path, sprite_width, sprite_height, true)
+        @@files[file_path] = Gosu::Image::load_tiles(file_path, sprite_width, sprite_height, tileable: true)
       rescue
         STDERR.puts "Cannot load #{file_path}"
         raise

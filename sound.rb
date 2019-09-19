@@ -1,6 +1,3 @@
-require 'rubygems'
-require 'gosu'
-
 SOUND_TO_TEXT = {
   'mein_spagetthicode.ogg'  => 'My spaghetti code!',
   'meine_magischen_qpc.ogg' => 'My magic quotes!',
@@ -33,7 +30,7 @@ class SoundPool
   
   def self.get(window, file_name)
     if @@sounds[file_name].nil?
-      @@sounds[file_name] = Gosu::Sample.new(window, file_name)
+      @@sounds[file_name] = Gosu::Sample.new(file_name)
     end
     
     return @@sounds[file_name]

@@ -35,12 +35,12 @@ class Player
   end
   
   def turn_left
-    @angle = (@angle + ANGLE_SPEED) % 360
+    @angle = (@angle + @window.adjust_speed(ANGLE_SPEED)) % 360
   end
   
   def turn_right
     # The added 360 here will make sure that @angle >= 0
-    @angle = (360 + @angle - ANGLE_SPEED) % 360
+    @angle = (360 + @angle - @window.adjust_speed(ANGLE_SPEED)) % 360
   end
   
   def dx
@@ -62,13 +62,13 @@ class Player
   end
   
   def move_forward
-    @x += dx
-    @y -= dy
+    @x += @window.adjust_speed(dx)
+    @y -= @window.adjust_speed(dy)
   end
   
   def move_backward
-    @x -= dx
-    @y += dy
+    @x -= @window.adjust_speed(dx)
+    @y += @window.adjust_speed(dy)
   end
   
   def health_percent
